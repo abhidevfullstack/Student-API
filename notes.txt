@@ -1,0 +1,168 @@
+API: Application Programming Interface
+
+API is just a software program using which we can access functionality of one application into the another
+
+Login with google
+Login with facebook
+
+Mumbai to bangalore
+indigo: APIs
+
+
+pnr status
+
+using API we can easily work with cross technologies
+we can now independently develop frontend as well as the backend
+
+url, method, res and req body, 
+
+node js
+Java 
+
+
+e-commerce
+
+web application
+android app
+ios app
+
+database -> 1
+API -> 1
+
+frontend:
+web
+android
+ios
+
+We should always secure an API with login authentication
+
+1. register the authenticate users
+2. create a login API
+3. Now on every secure url/route we need to check if user is logged in or not
+
+/students 
+
+
+Steps:
+1. Login API
+   Will receive username and password in req body
+   Check these values from Database
+   Two cases:
+   1. Username and password matched: respond with success message, create a token and send it in response
+   2. Credentials didn't match: respond with error message 
+
+2. Call secure API:
+    will fetch data for all the students
+    http://127.0.0.1:6800/students
+    
+    in the secure api before calling that req,res callback
+    we need to check if token is there in req or not
+    if token is there, then validate the token 
+    if token in valid then proceed to processing the request
+    if token is not there or token in invalid then respond with error message like User is not authenticated
+    
+
+JWT token: JSON Web Token is an object
+headers, payload and signature
+
+Payload in a token is a data assigned to it
+user data, id of the logged in user
+
+at the time of login when username and password matched then 
+we have to create a token and we have to specify the payload 
+and this token will then be encrypted in a string 
+
+to create and encode a token a module will be used and it will provide a function to do this
+
+
+
+Self Service Restaurant:
+1. Payment Counter: we have to do a successful payment, then we will get a token
+
+2. Food Counter: before providing the food, food counter will ask for the token, if we have given a token to them then we will get our food
+
+
+bcrypt
+
+1. url parameter
+2. request body
+
+
+
+we will pass token value in the request header
+header name is Authorization
+"Bearer eyydsfsdf...sdfsdf...sdfsdfsdfdsf"
+
+steps in secured API:
+
+1. create a middleware that will be called for every secured route
+2. read the token value from request header
+   read the token value from Authorization header
+3. Check for the existance of Authorization header
+   1. Header is present : 
+	read the token value: split the entire header value by space and get the 2nd element from the array
+        verify the token 
+	if token is valid then pass control to req,res callback
+	if token is not valid then respond with error token is invalid and  don't call req,res callback
+        
+   2. Header is not present : respond with error token is missing and don't call req,res callback
+
+
+
+
+
+req.params -> reading data from url
+req.body -> reading data from body
+
+req.get(header-name) -> reading data from header
+
+const header=req.get('Authorization');
+
+
+student-api:
+
+node_modules/
+src/
+   -- controllers/ (logic responsible for dealing with request and response)
+	
+   -- middlewares/ (place all the custom middlewares here)
+
+   -- routers/  (register the urls and call suitable controller based on the url/route)
+
+   -- utility/ (responsible for containing some re-usable functions)
+
+index.js (starting the server)
+package.json
+package-lock.json
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
